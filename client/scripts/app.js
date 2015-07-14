@@ -63,7 +63,6 @@ app.fetch = function() { //send email about edge case.
     $.ajax({
       url: 'https://api.parse.com/1/classes/chatterbox',
       type: 'GET',
-      // dataType: 'jsonp',
       success: function(data){
         for(var i = 0; i < data.results.length; i++){
           $('#main').append('<div>' + 'Username:' +escapeHtml(data.results[i].username) + '  Message:' + escapeHtml(data.results[i].text) + '</div>');
@@ -76,6 +75,7 @@ app.fetch = function() { //send email about edge case.
   // }, 100) //setInterval
 };
 
+app.fetch();
 
 app.clearMessages = function(){
   $('#chats').children().remove();
@@ -87,7 +87,7 @@ app.addMessage = function(message){
 
 app.addRoom = function(roomName){
   console.log("executed .addRoom");
-  $('#drop-nav').append('<option class="room">' + roomName + '</li>');
+  $('#drop-nav').append('<option class="room" name=' + roomName + '>' + roomName + '</li>');
 }
 
 
