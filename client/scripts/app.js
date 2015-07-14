@@ -4,7 +4,6 @@ var app = {
   server: 'https://api.parse.com/1/classes/chatterbox'
 
 };
-var thisNameVar = invokeThisFunc();
 
 app.init = function() {
   $('#main').find('.username').on('click', function(){
@@ -12,16 +11,13 @@ app.init = function() {
   });
   $('.submit').on('click', function(){
     var message = {};
-    // message.text = ;
-    console.log("name:", thisNameVar);
-    message.username = '' ;
-
+    
+    message.username = getParameterByName('username');
     message.text = $('#messageBox').val();
-    // message.username = ;
-    console.log('clicked');
+    message.roomName = '';
+
     app.send(message);
-    //e.preventDefault();
-    //app.handleSubmit();
+
 
   });
 
