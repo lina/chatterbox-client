@@ -11,21 +11,64 @@
     <script src="env/config.js"></script>
     <script src="scripts/app.js"></script>
     <script src="scripts/helpers.js"></script>
+
+    <!--new stuff-->
+    <style type="text/css">
+      ul {list-style: none;padding: 0px;margin: 0px;}
+      ul li {display: block;position: relative;float: left;border:1px solid #000}
+      li ul {display: none;}
+      ul li a {display: block;background: #000;padding: 5px 10px 5px 10px;text-decoration: none;
+               white-space: nowrap;color: #fff;}
+      ul li a:hover {background: #f00;}
+      li:hover ul {display: block; position: absolute;}
+      li:hover li {float: none;}
+      li:hover a {background: #f00;}
+      li:hover li a:hover {background: #000;}
+      #drop-nav li ul li {border-top: 0px; }
+    </style>
+    <!--new stuff-->
+
+
   </head>
   <body>
+    <a href="javascript:document.location.reload();"
+    ONMOUSEOVER="window.status='Refresh'; return true"
+    ONMOUSEOUT="window.status='ah... that was good'">
+    Click this to refresh</a>
+
+    <!--new stuff-->
+
+
     <div id="main">
       <h1>chatterbox</h1>
 
+      addRoom: 
+      <input type="text" name="message" id="roomNameInput">
+        <button class="roomSubmit">submit</button>
+
+
+      <br>
+      <br>
+      <ul id="drop-nav">
+        <li><a href="#">Rooms</a>
+          <ul id='roomSelect'>
+          </ul>
+        </li>
+      </ul>
+      <br>
+      <br>
+
+
       <!-- Your HTML goes here! -->
 
-        Message: <input type="text" name="message" id="messageBox"><br>
-        <button class="submit">submit</button>
-    
-<!--       <div id="message">
-        
-      </div>
-      <div id = "chats"></div>s
- -->
+      Username: <input type="text" name="message" id="userNameBox">
+      <br>
+      <br>
+      Message: <input type="text" name="message" id="messageBox">
+      <br>
+      <button class="submit">submit</button>
+
+
     </div>
   </body>
 </html>

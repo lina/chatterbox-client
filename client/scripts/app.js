@@ -1,3 +1,5 @@
+
+
 // YOUR CODE HERE:
 
 var app = {
@@ -6,25 +8,34 @@ var app = {
 };
 
 app.init = function() {
-  $('#main').find('.username').on('click', function(){
+
+  $('.username').on('click', function(){
     app.addFriend();
   });
+
   $('.submit').on('click', function(){
     var message = {};
     
-    message.username = getParameterByName('username');
+    message.username = $('#userNameBox').val();
     message.text = $('#messageBox').val();
     message.roomName = '';
 
     app.send(message);
+  });
 
+  $('.roomSubmit').on('click', function(){
+    var roomNameToAdd = $('#roomNameInput').val();
+    app.addRoom(roomNameToAdd);
 
   });
 
 };
 
+
 $('document').ready(function(){
   app.init();
+
+
 });
 
 app.send = function(message) {
@@ -44,51 +55,27 @@ app.send = function(message) {
   });
 };
 
-// app.send(message);
 
 
-
-
-
-// message.username = "something";
-// // var message = {
-// //   username: 'something',
-// //   text: document.getElementById('mesageBox').value
-// // }
-
-// app.send(message);
-
-// var sendMessage = function(message) {
-//   $('#main').prepend('<div>' + )
-// }
-
-// var getMessage = function(data) {
-//   //for loop to get data.results[i]
-//   for(var i = 0; i < data.results.length; i++){
-//     $('#main').append('<div> data.results[i].username + data.results[i].text </div>');
-//   }
-//   //append this data to main
-//   //give it a class of messages
-//   //sanitize the data when you append it. 
-//     //add the username and the text
-//     //close off the div tag. 
-// }
 
 app.fetch = function() { //send email about edge case.
-  $.ajax({
-    url: 'https://api.parse.com/1/classes/chatterbox',
-    type: 'GET',
-    success: function(data){
-      for(var i = 0; i < data.results.length; i++){
-        $('#main').append('<div>' + 'Username:' +escapeHtml(data.results[i].username) + '  Message:' + escapeHtml(data.results[i].text) + '</div>');
-      }
-    }, 
-    error: function(){
+  // setInterval(function() {
+    $.ajax({
+      url: 'https://api.parse.com/1/classes/chatterbox',
+      type: 'GET',
+      // dataType: 'jsonp',
+      success: function(data){
+        for(var i = 0; i < data.results.length; i++){
+          $('#main').append('<div>' + 'Username:' +escapeHtml(data.results[i].username) + '  Message:' + escapeHtml(data.results[i].text) + '</div>');
+        }
+      }, 
+      error: function(){
 
-    }
-  });
+      }
+    });    
+  // }, 100) //setInterval
 };
-app.fetch();
+
 
 app.clearMessages = function(){
   $('#chats').children().remove();
@@ -99,31 +86,14 @@ app.addMessage = function(message){
 }
 
 app.addRoom = function(roomName){
-  $('#roomSelect').append("<p>roomName</p>");
+  console.log("executed .addRoom");
+  $('ul #roomSelect').append('<li class="room">' + roomName + '</li>');
 }
+
 
 app.addFriend = function(){
 }
 
 app.handleSubmit = function(){
-  console.log("called handleSubmit");
 };
 
-
-
-
-    //   it('should try to send a message upon clicking submit', function(){
-    //     sinon.spy(app, 'handleSubmit');
-
-    //     $('#message').val('Why so many Mel Brooks quotes?');
-
-    //     app.init();
-
-    //     $('#send .submit').trigger('submit');
-    //     expect(app.handleSubmit.calledOnce).to.be.true;
-
-    //     app.handleSubmit.restore();
-    //   });
-    // });
-
-console.log();
