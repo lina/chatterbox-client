@@ -87,7 +87,7 @@ app.addMessage = function(message){
 
 app.addRoom = function(roomName){
   console.log("executed .addRoom");
-  $('ul #roomSelect').append('<li class="room">' + roomName + '</li>');
+  $('#drop-nav').append('<option class="room">' + roomName + '</li>');
 }
 
 
