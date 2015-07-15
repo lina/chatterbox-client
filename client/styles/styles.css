@@ -84,7 +84,18 @@ form input[type=text] {
 }
 
 
+div .users {
+    border-radius: 5px;
+    border: 2px solid #8AC007;    
+    padding: 10px; 
+    margin: 10px;
+}
 
-
+#main .friend span{
+    font-weight: bold; 
+}
+#main .username:hover{
+    cursor: pointer;
+}
 /* new stuff */
 
